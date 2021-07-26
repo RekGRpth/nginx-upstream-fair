@@ -40,6 +40,10 @@ typedef struct {
     struct sockaddr                    *sockaddr;
     socklen_t                           socklen;
     ngx_str_t                           name;
+#if (T_NGX_HTTP_DYNAMIC_RESOLVE)
+    ngx_str_t                           host;
+    void                               *data;
+#endif
 
     ngx_uint_t                          weight;
     ngx_uint_t                          max_fails;
