@@ -991,6 +991,10 @@ ngx_http_upstream_get_fair_peer(ngx_peer_connection_t *pc, void *data)
     pc->sockaddr = peer->sockaddr;
     pc->socklen = peer->socklen;
     pc->name = &peer->name;
+#if (T_NGX_HTTP_DYNAMIC_RESOLVE)
+    pc->host = &peer->host;
+    pc->peer_data = peer->data;
+#endif
 
     peer->shared->last_req_id = fp->peers->shared->total_requests;
     ngx_http_upstream_fair_update_nreq(fp, 1, pc->log);
