@@ -972,7 +972,7 @@ ngx_http_upstream_get_fair_peer(ngx_peer_connection_t *pc, void *data)
     ngx_log_debug3(NGX_LOG_DEBUG_HTTP, pc->log, 0, "[upstream_fair] fp->current = %d, peer_id = %d, ret = %d",
         fp->current, peer_id, ret);
 
-    if (pc)
+    if (pc->tries)
         pc->tries--;
 
     if (ret == NGX_BUSY) {
