@@ -911,7 +911,7 @@ ngx_http_upstream_choose_fair_peer(ngx_peer_connection_t *pc,
     ngx_http_upstream_fair_peer_data_t *fp, ngx_uint_t *peer_id)
 {
     ngx_uint_t                          npeers;
-    ngx_uint_t                          best_idx = NGX_PEER_INVALID;
+    ngx_uint_t                          best_idx;
     ngx_uint_t                          weight_mode;
 
     npeers = fp->peers->number;
