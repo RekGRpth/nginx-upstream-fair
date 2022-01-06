@@ -42,7 +42,6 @@ typedef struct {
     ngx_str_t                           name;
 #if (T_NGX_HTTP_DYNAMIC_RESOLVE)
     ngx_str_t                           host;
-    void                               *data;
 #endif
 
     ngx_uint_t                          weight;
@@ -997,7 +996,6 @@ ngx_http_upstream_get_fair_peer(ngx_peer_connection_t *pc, void *data)
     pc->name = &peer->name;
 #if (T_NGX_HTTP_DYNAMIC_RESOLVE)
     pc->host = &peer->host;
-    pc->peer_data = peer->data;
 #endif
 
     peer->shared->last_req_id = fp->peers->shared->total_requests;
