@@ -40,9 +40,6 @@ typedef struct {
     struct sockaddr                    *sockaddr;
     socklen_t                           socklen;
     ngx_str_t                           name;
-#if (T_NGX_HTTP_DYNAMIC_RESOLVE)
-    ngx_str_t                           host;
-#endif
 
     ngx_uint_t                          weight;
     ngx_uint_t                          max_fails;
@@ -994,9 +991,6 @@ ngx_http_upstream_get_fair_peer(ngx_peer_connection_t *pc, void *data)
     pc->sockaddr = peer->sockaddr;
     pc->socklen = peer->socklen;
     pc->name = &peer->name;
-#if (T_NGX_HTTP_DYNAMIC_RESOLVE)
-    pc->host = &peer->host;
-#endif
 
     peer->shared->last_req_id = fp->peers->shared->total_requests;
     ngx_http_upstream_fair_update_nreq(fp, 1, pc->log);
